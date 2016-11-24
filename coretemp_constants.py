@@ -15,3 +15,7 @@ SUB_CRT_TYPE = 516
 NORM = "NORMAL"
 HIGH = "HIGH"
 CRTC = "CRITICAL!"
+
+''' '''
+ARR_MSG = "Failure to Initialize Alert: %s" 
+SND_MSG = "Failure to send Alert message: %s"

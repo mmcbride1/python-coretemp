@@ -23,9 +23,9 @@ class Config:
       :param str sect: properties section
       """
       self.sect = sect
-      config = cf.RawConfigParser()
+      config = cp.RawConfigParser()
       config.read(self.CONF_FILE)
-      for k, v in config.items(sect)
+      for k, v in config.items(sect):
          self.conf[k] = v
 
    def get_config(self):

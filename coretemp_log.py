@@ -43,8 +43,8 @@ class CoretempLog:
       self.msg = msg
       
       logf = self.LOG_FILE    
-      size = self.__get_size(logf)
       if os.path.isfile(logf):
+         size = self.__get_size(logf)
          if size > self.MAX_SIZE_KB:
             os.remove(logf)
       with open(logf, "a") as log:

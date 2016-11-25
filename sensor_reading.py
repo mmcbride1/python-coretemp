@@ -36,7 +36,7 @@ class SensorReading:
          self.__set_chip_read()
          self.__set_message()
       except Exception as ex:
-         ERRO.update_errlog(ex)
+         self.ERRO.update_errlog(ex)
 
    def get_reading(self):
       """ 
@@ -89,7 +89,7 @@ class SensorReading:
          avg = sum(arr)/float(len(arr)) 
          return round(avg, 2)
       except ZeroDivisionError as z:
-         ERRO.update_errlog(z)
+         self.ERRO.update_errlog(z)
          return 0
 
    def get_avg_read(self):
@@ -99,7 +99,7 @@ class SensorReading:
       read
       :return: average core value 
       """
-      return self.avg(self.read.values())
+      return self.__avg(self.read.values())
 
    def __msg_str(self, k, v, i):
       """ 
@@ -147,9 +147,9 @@ class SensorReading:
       c = self.CONF['crit']
 
       if h is "" or float(h) <= 0:
-         h = self.avg(self.high)
+         h = self.__avg(self.high)
       if c is "" or float(c) <= 0:
-         c = self.avg(self.crit)
+         c = self.__avg(self.crit)
       return {'MAX':float(h),'CRT':float(c)}
 
    def __set_chip_read(self):

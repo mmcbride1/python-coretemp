@@ -1,6 +1,6 @@
 import smtplib
 import coretemp_log as log
-import coretem_config as conf
+import coretemp_config as conf
 
 ''' Import exception messages '''
 from coretemp_constants import ARR_MSG, SND_MSG 
@@ -11,7 +11,7 @@ class Alert:
    MONITOR = "system-coretemp-monitor"
 
    ''' Send object '''
-   SEND = smtbObj.SMTP('localhost')
+   SEND = smtplib.SMTP('localhost')
 
    ''' Configuration '''
    CONF = conf.Config("alert").get_config()
@@ -55,7 +55,7 @@ class Alert:
 
       try:
          for x in self.r:
-            self.SEND.sendmail(self.s,x self.message(r,msg))
+            self.SEND.sendmail(self.s,x,self.message(r,msg))
       except Exception as ex:
          log.update_errlog(SND_MSG % ex)
 

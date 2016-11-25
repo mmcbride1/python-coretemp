@@ -56,7 +56,7 @@ class ExceptionLog:
    LOG_FILE = "/var/log/coretemp_error.log"
 
    ''' Log format '''
-   FORMAT = '%(asctime)-15s %(user)-8s %(message)s'
+   FORMAT = '%(asctime)-15s %(user)-8s - %(message)s'
 
    ''' Log object '''
    LOGGER = logging.getLogger("coretemp_monitor")
@@ -68,7 +68,7 @@ class ExceptionLog:
       """
       self.msg = msg
 
-      out = "Coretemp Monitor Failure %s"
+      out = "Coretemp Monitor Failure: %s"
 
       d = {'user':'coretemp'}
       h = logging.FileHandler(self.LOG_FILE)

@@ -1,4 +1,5 @@
 import sys
+import time
 import coretemp_log as log
 import sensor_reading as r
 import coretemp_alert as alert 
@@ -40,4 +41,6 @@ def main(_msg):
       exlog.update_errlog(ex)
 
 if __name__ == "__main__":
-   main(msg)
+   while True:
+      main(msg)
+      time.sleep(120)

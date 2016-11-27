@@ -40,6 +40,7 @@ def monitor():
    if msg_:
       x = read.get_failed()
       msg_ += write_avg(read)
+      msg_ += "==============================================="
       ctlog.update_templog(msg_)
       if x:
          send(x)

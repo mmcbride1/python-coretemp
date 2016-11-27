@@ -1,0 +1,69 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:          python-coretemp
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: python-coretemp initscript
+
+# process to run #
+PRC=coretemp.py
+
+# pid #
+RUN=/var/run/coretemp.pid
+
+# process path #
+LOC=/home/mattymain/Development/python/new_coretmp/python-coretemp/
+
+case "$1" in
+    start)
+        if [ -f $RUN ]
+          then 
+            echo "monitor already running..."
+        else
+            echo "starting monitor..."
+            sleep 1
+            $LOC/$PRC &
+          if [ $? -eq 0 ]; then  
+            echo "monitor started"
+            echo $! > $RUN
+          else
+            echo "failed to init monitor"
+            exit 1
+          fi
+        fi
+        ;;
+    stop)
+        if [ -f $RUN ]
+          then
+            echo "stopping monitor..."
+            sleep 1
+            rm $RUN
+            killall $PRC 
+            if [ $? -eq 0 ]; then
+              echo "monitor stopped"
+            else
+              echo "could not find process!"
+              exit 1
+            fi 
+        else
+            echo "monitor not running..." 
+        fi
+        ;;
+    status)
+        if [ -f $RUN ]
+          then
+            echo -e "\e[42mrunning\e[0m"
+        else
+            echo -e "\e[41mstopped\e[0m"
+        fi
+        ;;
+    *)
+        echo "usage: service coretemp-monitor {start|stop|status}"
+        exit 1
+        ;;
+  esac
+
+  exit 0

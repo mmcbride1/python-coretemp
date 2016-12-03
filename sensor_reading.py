@@ -179,9 +179,11 @@ class SensorReading:
       th = self.__set_defaults(self.get_threshold())
 
       for k, v in self.get_reading().items():
-         if v >= th['MAX'] and v < th['CRT']:
-            self.MSG += self.__msg_str(k, v, HIGH)
-         if v >= th['CRT']:
-            self.MSG += self.__msg_str(k, v, CRTC)
+         if v < th['MAX']:
+            self.MSG += self.__msg_str(k,v,NORM)
+         elif v >= th['MAX'] and v < th['CRT']:
+            self.MSG += self.__msg_str(k,v,HIGH)
+         elif v >= th['CRT']:
+            self.MSG += self.__msg_str(k,v,CRTC)
          else:
-            self.MSG += self.__msg_str(k, v, NORM)
+            self.MSG += self.__msg_str(k,v,"UNKNOWN")

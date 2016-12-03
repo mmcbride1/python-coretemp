@@ -13,6 +13,10 @@ class CoretempExecutable(Daemon):
    # poll interval    
    POLL = 300
 
+   # Main logs 
+   ctlog = log.CoretempLog()
+   exlog = log.ExceptionLog()
+
    def get_interval(self):
       """
       Get the configured 

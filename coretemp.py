@@ -24,10 +24,14 @@ class CoretempExecutable(Daemon):
       return default 
       """
       CONF = conf.Config("poll").get_config()
-      if not CONF or CONF < 5:
-         return self.POLL
-      else:
-         return float(CONF['interval'])
+      try:
+         inv = float(CONF['interval'])
+         if inv < 5:
+            return self.POLL
+         else:
+            return inv
+      except ValueError:
+         return self.POLL    
 
    def run(self):
       """

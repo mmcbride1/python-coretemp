@@ -31,6 +31,7 @@ class CoretempExecutable(Daemon):
          else:
             return inv
       except ValueError:
+         self.exlog.update_errlog("Error in 'coretemp.properties'. Interval value must be a number. Using default %s" % self.POLL)
          return self.POLL    
 
    def run(self):

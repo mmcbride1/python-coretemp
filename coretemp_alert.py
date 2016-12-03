@@ -23,10 +23,10 @@ class Alert:
       Initialize sender and receiver
       """
       try:
-         self.s = CONF['fr_email']
-         self.r = CONF['to_email'].split(",")
+         self.s = self.CONF['fr_email']
+         self.r = self.CONF['to_email'].split(",")
       except Exception as ex:
-         ERRO.update_errlog(ARR_MSG % ex)
+         self.ERRO.update_errlog(ARR_MSG % ex)
 
    def message(self, to, msg):
       """ 
@@ -55,7 +55,7 @@ class Alert:
 
       try:
          for x in self.r:
-            self.SEND.sendmail(self.s,x,self.message(r,msg))
+            self.SEND.sendmail(self.s,x,self.message(self.r,msg))
       except Exception as ex:
-         log.update_errlog(SND_MSG % ex)
+         self.ERRO.update_errlog(SND_MSG % ex)
 

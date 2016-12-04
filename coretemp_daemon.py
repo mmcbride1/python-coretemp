@@ -82,7 +82,7 @@ class Daemon:
          pid = None
 	
       if pid:
-         message = "pidfile %s already exist. Daemon already running?\n"
+         message = "pidfile %s present. Daemon already running.\n"
          sys.stderr.write(message % self.pidfile)
          sys.exit(1)
 		
@@ -103,7 +103,7 @@ class Daemon:
          pid = None
 	
       if not pid:
-         message = "pidfile %s does not exist. Daemon not running?\n"
+         message = "pidfile %s not present. Daemon not running.\n"
          sys.stderr.write(message % self.pidfile)
          return # not an error in a restart
 

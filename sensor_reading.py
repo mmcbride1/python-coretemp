@@ -150,7 +150,13 @@ class SensorReading:
          h = self.__avg(self.high)
       if c is "" or float(c) <= 0:
          c = self.__avg(self.crit)
-      return {'MAX':float(h),'CRT':float(c)}
+
+      order = [float(h),float(c)]
+
+      high = min(order)
+      crit = max(order)
+
+      return {'MAX':high,'CRT':crit}
 
    def __set_chip_read(self):
       """ 

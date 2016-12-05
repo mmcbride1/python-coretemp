@@ -91,8 +91,10 @@ class CoretempExecutable(Daemon):
       except Exception as ex:
          self.exlog.update_errlog(ex)
 
-if __name__ == "__main__":
-
+def cli():
+   """
+   Entry point
+   """
    PID = '/var/run/coretemp.pid'
 
    daemon = CoretempExecutable(PID)

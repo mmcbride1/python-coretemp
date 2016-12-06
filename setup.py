@@ -28,7 +28,7 @@ setup(
    url = 'https://github.com/mmcbride1/python-coretemp',
    classifiers = [],
 #   cmdclass = {'install': PostInstallCommand},
-   data_files = [('/etc', ['coretemp/coretemp.properties'])],
+   data_files = [('/etc', ['coretemp.properties'])],
    entry_points = {
    'console_scripts': [
    'coretemp-monitor=monitor:cli',

@@ -17,7 +17,7 @@ class PostInstallCommand(install):
 setup(
    name = 'coretemp',
    packages = ['coretemp'],
-   version = '0.1.2',
+   version = '0.1.3',
    install_requires = [
     'pysensors >= 0.0.3',
     'termcolor >= 0.0.1',
@@ -27,7 +27,8 @@ setup(
    author_email = 'mrmcbride@smcm.edu',
    url = 'https://github.com/mmcbride1/python-coretemp',
    classifiers = [],
-   cmdclass = {'install': PostInstallCommand},
+#   cmdclass = {'install': PostInstallCommand},
+   data_files = [('/etc', ['coretemp/coretemp.properties'])],
    entry_points = {
    'console_scripts': [
    'coretemp-monitor=monitor:cli',

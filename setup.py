@@ -1,7 +1,7 @@
 import os
 import shutil
 import subprocess 
-from distutils.core import setup
+from setuptools import setup    
 from setuptools.command.install import install
 
 class PostInstallCommand(install):

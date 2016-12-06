@@ -18,7 +18,10 @@ setup(
    name = 'coretemp',
    packages = ['coretemp'],
    version = '0.1',
-   install_requires=['pysensors','termcolor'],
+   install_requires = [
+    'pysensors >= 0.0.3',
+    'termcolor >= 0.0.1',
+   ],
    description = 'A simple service to monitor CPU temp',
    author = 'Matthew R McBride',
    author_email = 'mrmcbride@smcm.edu',

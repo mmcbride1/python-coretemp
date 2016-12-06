@@ -1,4 +1,5 @@
 import os
+import shutil
 import subprocess 
 from distutils.core import setup
 from setuptools.command.install import install
@@ -6,8 +7,9 @@ from setuptools.command.install import install
 class PostInstallCommand(install):
    
    def mv_properties():
-      f = 'coretemp/coretemp.properties'
-      os.rename(f, "/etc/%s" % f)
+      b = 'coretemp/'
+      f = 'coretemp.properties'
+      shutil.copy2(b + f, '/etc/')
 
    def run(self):
       install.run(self)

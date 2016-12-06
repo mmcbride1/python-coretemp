@@ -23,9 +23,7 @@ setup(
    author = 'Matthew R McBride',
    author_email = 'mrmcbride@smcm.edu',
    url = 'https://github.com/mmcbride1/python-coretemp',
-   download_url = 'https://github.com/mmcbride1/python-coretemp/tarball/0.1',
-   keywords = ['cpu', 'monitor', 'service'],
-   classifiers = []
+   classifiers = [],
    cmdclass = {'install': PostInstallCommand},
    entry_points = {
    'console_scripts': [

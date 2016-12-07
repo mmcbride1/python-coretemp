@@ -33,7 +33,7 @@ class PostInstallCommand(install):
 setup(
    name = 'coretemp',
    packages = ['coretemp'],
-   version = '0.1',
+   version = '0.1.8.9.7',
    install_requires = [
     'pysensors >= 0.0.3',
     'termcolor >= 0.0.1',
@@ -47,7 +47,7 @@ setup(
    cmdclass = {'install': PostInstallCommand},
    entry_points = {
    'console_scripts': [
-   'coretemp-monitor=monitor:cli',
+   'coretemp-monitor=coretemp.monitor:cli',
   ],
  }
 )

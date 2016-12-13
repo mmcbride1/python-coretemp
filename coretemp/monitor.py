@@ -2,11 +2,13 @@
 
 import sys
 import time
+import threading as t
 import sensor_reading as r
 import coretemp_log as log
 import coretemp_alert as alert
 import coretemp_config as conf
 from coretemp_daemon import Daemon
+from coretemp_constants import INV_MSG
 
 class CoretempExecutable(Daemon):
 
@@ -31,7 +33,7 @@ class CoretempExecutable(Daemon):
          else:
             return inv
       except ValueError:
-         self.exlog.update_errlog("Error in 'coretemp.properties'. Interval value must be a number. Using default %s" % self.POLL)
+         self.exlog.update_errlog(INV_MSG % self.POLL)
          return self.POLL    
 
    def run(self):
@@ -80,7 +82,9 @@ class CoretempExecutable(Daemon):
          msg_ += "==============================================="
          self.ctlog.update_templog(msg_)
          if x:
-            self.send(x)
+            d = t.Thread(name='ctm',target=self.send,args=(x,))
+            d.setDaemon(True)
+            d.start()
 
    def main_x(self):
       """

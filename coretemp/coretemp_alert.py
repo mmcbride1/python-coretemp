@@ -10,8 +10,8 @@ class Alert:
    ''' Monitor name '''
    MONITOR = "system-coretemp-monitor"
 
-   ''' Send object '''
-   SEND = smtplib.SMTP('localhost')
+   ''' Server timeout '''
+   TIMEOUT = 30
 
    ''' Configuration '''
    CONF = conf.Config("alert").get_config()
@@ -27,6 +27,28 @@ class Alert:
          self.r = self.CONF['to_email'].split(",")
       except Exception as ex:
          self.ERRO.update_errlog(ARR_MSG % ex)
+
+   def server(self):
+      """
+      Get the configured mail server
+      :return: mail server
+      """
+      if not self.CONF['host']:
+         return 'localhost'
+      else:
+         return self.CONF['host']
+
+   def port(self):
+      """
+      Get configured port
+      :return: port
+      """
+      try:
+         port = int(self.CONF['port'])
+      except:
+         return 25
+      else:
+         return port
 
    def message(self, to, msg):
       """ 
@@ -53,9 +75,14 @@ class Alert:
       """
       self.msg = msg 
 
+      port_ = self.port()
+      serv_ = self.server()
+
+      SEND = smtplib.SMTP('localhost',port_,self.TIMEOUT)
+
       try:
          for x in self.r:
-            self.SEND.sendmail(self.s,x,self.message(self.r,msg))
+            SEND.sendmail(self.s,x,self.message(self.r,msg))
       except Exception as ex:
          self.ERRO.update_errlog(SND_MSG % ex)
-
+      SEND.quit()

@@ -19,3 +19,4 @@ CRTC = "CRITICAL!"
 ''' '''
 ARR_MSG = "Failure to Initialize Alert: %s" 
 SND_MSG = "Failure to send Alert message: %s"
+INV_MSG = "Error in 'coretemp.properties'. Interval value must be a number. Using default %s"

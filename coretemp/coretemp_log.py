@@ -68,7 +68,7 @@ class ExceptionLog:
       """
       self.msg = msg
 
-      out = "Coretemp Monitor Error: %s"
+      out = "Coretemp Monitor Notice: %s"
 
       d = {'user':'coretemp'}
       h = logging.FileHandler(self.LOG_FILE)

@@ -3,7 +3,7 @@ import coretemp_log as log
 import coretemp_config as conf
 
 ''' Import exception messages '''
-from coretemp_constants import ARR_MSG, SND_MSG 
+from coretemp_constants import ARR_MSG, SND_MSG, SMT_MSG
 
 class Alert:
 
@@ -78,11 +78,13 @@ class Alert:
       port_ = self.port()
       serv_ = self.server()
 
-      SEND = smtplib.SMTP(serv_,port_,self.TIMEOUT)
-
       try:
-         for x in self.r:
-            SEND.sendmail(self.s,x,self.message(self.r,msg))
+         SEND = smtplib.SMTP(serv_,port_,self.TIMEOUT)
+         try:
+            for x in self.r:
+               SEND.sendmail(self.s,x,self.message(self.r,msg))
+         except Exception as ex:
+            self.ERRO.update_errlog(SND_MSG % ex)
+         SEND.quit()
       except Exception as ex:
-         self.ERRO.update_errlog(SND_MSG % ex)
-      SEND.quit()
+         self.ERRO.update_errlog(SMT_MSG % (serv_,port_,ex))

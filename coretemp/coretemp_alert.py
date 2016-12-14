@@ -33,10 +33,10 @@ class Alert:
       Get the configured mail server
       :return: mail server
       """
-      if not self.CONF['host']:
+      if not self.CONF['server']:
          return 'localhost'
       else:
-         return self.CONF['host']
+         return self.CONF['server']
 
    def port(self):
       """
@@ -78,7 +78,7 @@ class Alert:
       port_ = self.port()
       serv_ = self.server()
 
-      SEND = smtplib.SMTP('localhost',port_,self.TIMEOUT)
+      SEND = smtplib.SMTP(serv_,port_,self.TIMEOUT)
 
       try:
          for x in self.r:

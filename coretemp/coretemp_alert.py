@@ -1,6 +1,7 @@
 import smtplib
 import coretemp_log as log
 import coretemp_config as conf
+from email.mime.text import MIMEText as text
 
 ''' Import exception messages '''
 from coretemp_constants import ARR_MSG, SND_MSG, SMT_MSG
@@ -60,13 +61,11 @@ class Alert:
       self.to = to
       self.msg = msg
 
-      return """ 
-      From: %s <%s>
-      To: <%s>
-      Subject: Coretemp Notification!
-
-      %s      
-      """ % (self.MONITOR, self.s, to, msg)
+      msg_ = text(msg)
+      msg_['From'] = self.s
+      msg_['To'] = to
+      msg_['Subject'] = "Coretemp Notification!"
+      return msg_.as_string()
 
    def send_message(self, msg):
       """ 
@@ -82,7 +81,7 @@ class Alert:
          SEND = smtplib.SMTP(serv_,port_,self.TIMEOUT)
          try:
             for x in self.r:
-               SEND.sendmail(self.s,x,self.message(self.r,msg))
+               SEND.sendmail(self.s,x,self.message(x,msg))
          except Exception as ex:
             self.ERRO.update_errlog(SND_MSG % ex)
          SEND.quit()

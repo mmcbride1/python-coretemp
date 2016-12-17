@@ -4,7 +4,7 @@ import coretemp_config as conf
 from email.mime.text import MIMEText as text
 
 ''' Import exception messages '''
-from coretemp_constants import ARR_MSG, SND_MSG, SMT_MSG
+from coretemp_constants import ARR_MSG, SND_MSG, SMT_MSG, HDR_MSG
 
 class Alert:
 
@@ -61,7 +61,7 @@ class Alert:
       self.to = to
       self.msg = msg
 
-      msg_ = text(msg)
+      msg_ = text(HDR_MSG + '\n\n' + msg)
       msg_['From'] = self.s
       msg_['To'] = to
       msg_['Subject'] = "Coretemp Notification!"

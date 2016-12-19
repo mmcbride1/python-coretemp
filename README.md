@@ -110,3 +110,6 @@ This section defines the polling interval at which the process should check and 
 
 1.) `interval` -> Default `300`: The amount of time (in seconds) the process should yield between each poll.    
 
+# Bug Reports
+
+Issues and bugs are taken seriously and handled propmptly. Please send reports to switchnotifier@gmail.com.

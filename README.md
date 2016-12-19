@@ -80,6 +80,12 @@ The monitoring process alerts via email whenever CPU temperature exceeds a certa
 
 # Configuration
 
+When updating the configuration, use:    
+
+```
+sudo coretemp-monitor restart
+```
+
 The process configuration file is called `coretemp.properties` and lives in the `/etc/` directory. This file may be editied by the administrator to define the behavior of three primary sets of attributes:
 
 ## alerts
@@ -103,3 +109,4 @@ This section defines the what the administrator will consider *high* and *critic
 This section defines the polling interval at which the process should check and report the state of the CPU. 
 
 1.) `interval` -> Default `300`: The amount of time (in seconds) the process should yield between each poll.    
+

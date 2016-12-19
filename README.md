@@ -36,7 +36,7 @@ sudo apt-get install sendmail
 `python-coretemp` may be installed via pip. Specifically:
 
 ```
-sudo pip install python-coretemp
+sudo pip install coretemp    
 ```
 The process (when started) should run out of the box. The reason `python-coretemp` needs `sudo` is because it copies the `coretemp.properties` file to the `/etc` directory, and writes log files to `/var/log` and a pid file to `/var/run`.. as do conventional daemon processes that are meant to be invoked at lower levels of the system. The process performs NO other actions root, as it is a non-invasive process.  
 

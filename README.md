@@ -47,6 +47,11 @@ The application runs as a daemon, and polls on a configured schedule (but does i
 ```
 sudo coretemp-monitor {start|stop|restart|status}
 ```
+To start the daemon on boot, add the following to the `/etc/rc.d/rc.local` file:
+
+```
+coretemp-monitor start
+```
 
 # Logging
 

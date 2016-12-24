@@ -73,7 +73,7 @@ Core 1 : 73.0 -> CRITICAL!
 Core Mean: 72.5
 ===============================================
 ```
-This file will be recycled when reaching a size of 1 MB. The ability to choose an expanded recycle interval and also archive coretemp log files will be available in the next release.    
+This file will be recycled when reaching a size of 1 MB (which equates to running the monitor over a 7 day week uniterrupted on the default schedule). The ability to choose an expanded recycle interval and also archive coretemp log files will be available in an another release. In the mean time, users wishing to archive log files may use a log manager such as `logwatch`, etc or set up a bash process to compress and store coretemp log files when needed. 
 
 2. `/var/log/coretemp_error.log` - Records any exception/error perpetuated by the coretemp polling/notification process. Examples may be bad confiuration, mail server connection issues, etc. This file must be manually recycled. 
 

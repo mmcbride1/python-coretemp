@@ -4,7 +4,7 @@ Application to monitor system CPU core temperature. This application is meant to
 
 # Overview 
 
-The `python-coretemp` package provides `coretemp-monitor`, a very simple, lightweight daemon that works with `lm_sensors` to monitor CPU core tempurature. The service performs two primary functions:
+The `python-coretemp` package provides `coretemp-monitor`, a very simple daemon that works with `lm_sensors` to monitor CPU core tempurature. The service performs two primary functions:
 
 1. Check the CPU core temperature on a recurrent interval provided by the administrator and keep a log file of the collected results for hindsight analysis.    
 

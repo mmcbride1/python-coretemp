@@ -6,17 +6,17 @@ Application to monitor system CPU core temperature. This application is meant to
 
 The `python-coretemp` package provides `coretemp-monitor`, a very simple, lightweight daemon that works with `lm_sensors` to monitor CPU core tempurature. The service performs two primary functions:
 
-1.) Check the CPU core temperature on a recurrent interval provided by the administrator and keep a log file of the collected results for hindsight analysis.    
+1. Check the CPU core temperature on a recurrent interval provided by the administrator and keep a log file of the collected results for hindsight analysis.    
 
-2.) Alert the administrator via email when ever the core temperature exceeds a given value, which is referred to as a 'threshold'. The context of the thresholds mimic that given by the `lm_sensors` package, that is, it defines a value that represents a *high* core temperature and a value that represents a *critical* core temperature. Any readings that are not deemed as *high* or *critical* are considered *normal*, though these values will still be collected and logged.   
+2. Alert the administrator via email when ever the core temperature exceeds a given value, which is referred to as a 'threshold'. The context of the thresholds mimic that given by the `lm_sensors` package, that is, it defines a value that represents a *high* core temperature and a value that represents a *critical* core temperature. Any readings that are not deemed as *high* or *critical* are considered *normal*, though these values will still be collected and logged.   
 
 # Dependencies    
 
 `python-coretemp` requires two system packages to run normally:
 
-1.) `lm_sensors`
+1. `lm_sensors`
 
-2.) `sendmail`    
+2. `sendmail`    
 
 Please ensure these dependencies are present on the system before installing `python-coretemp`. You may install them via:
 
@@ -57,7 +57,7 @@ coretemp-monitor start
 
 The following outlines the information kept by the monitoring process:
 
-1.) `/var/log/coretemp.log` - This is the polling log, recording sensor query information on an interval that is either the default (every 5 minutes), or on an interval configured by the administrator. On a two core processor, the entry would resemble the following (if on a 2 minute schedule):
+1. `/var/log/coretemp.log` - This is the polling log, recording sensor query information on an interval that is either the default (every 5 minutes), or on an interval configured by the administrator. On a two core processor, the entry would resemble the following (if on a 2 minute schedule):
 
 ```
 2016-12-17 22:13:37.966300 - coretemp-reading :
@@ -75,9 +75,9 @@ Core Mean: 72.5
 ```
 This file will be recycled when reaching a size of 1 MB. The ability to choose an expanded recycle interval and also archive coretemp log files will be available in the next release.    
 
-2.) `/var/log/coretemp_error.log` - Records any exception/error perpetuated by the coretemp polling/notification process. Examples may be bad confiuration, mail server connection issues, etc. This file must be manually recycled. 
+2. `/var/log/coretemp_error.log` - Records any exception/error perpetuated by the coretemp polling/notification process. Examples may be bad confiuration, mail server connection issues, etc. This file must be manually recycled. 
 
-3.) `/tmp/coretemp-daemon` - Records any exception/error perpetuated on the level of the *daemon*.
+3. `/tmp/coretemp-daemon` - Records any exception/error perpetuated on the level of the *daemon*.
 
 # Alerts
 
@@ -97,23 +97,22 @@ The process configuration file is called `coretemp.properties` and lives in the 
 
 This section handles the emailing specifics:
 
-1.) `fr_email` -> Default: `root@localhost`. The account from which to send the email alert.
+1. `fr_email` -> Default: `root@localhost`. The account from which to send the email alert.
 
-2.) `to_email` -> Default: `root@localhost`. A comma separated list of email addresses which to send the alert. (ex. me@gamil.com,you@gmail.com)
+2. `to_email` -> Default: `root@localhost`. A comma separated list of email addresses which to send the alert. (ex. me@gamil.com,you@gmail.com)
 
 ## threshold 
 
 This section defines the what the administrator will consider *high* and *critical* CPU core temperature values. If these values are `<0` or absent, the process will use the recommended thresholds provided by `lm_sensors`. 
 
-1.) `high` -> Default: `-1`: The temperature (degrees celsius) at which the core temperature should be considered *high*.
+1. `high` -> Default: `-1`: The temperature (degrees celsius) at which the core temperature should be considered *high*.
 
-2.) `crit` -> Default: `-1`: The temperature (degrees celsius) at which the core temperature should be considered *critical*. 
+2. `crit` -> Default: `-1`: The temperature (degrees celsius) at which the core temperature should be considered *critical*. 
 
 ## poll        
 
 This section defines the polling interval at which the process should check and report the state of the CPU. 
-
-1.) `interval` -> Default `300`: The amount of time (in seconds) the process should yield between each poll.    
+1. `interval` -> Default `300`: The amount of time (in seconds) the process should yield between each poll.    
 
 # Bug Reports
 

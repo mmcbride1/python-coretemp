@@ -33,7 +33,7 @@ sudo apt-get install sendmail
 
 # Installation
 
-`python-coretemp` may be installed via pip. Specifically:
+`python-coretemp` may be installed via pypi. Specifically:
 
 ```
 sudo pip install coretemp    

@@ -42,7 +42,7 @@ The process (when started) should run out of the box. The reason `python-coretem
 
 # Usage
 
-The application runs as a daemon, and polls on a configured schedule (with a default value of every 5 minutes). The general usage is:
+The application runs as a daemon and polls on a configured schedule (with a default value of every 5 minutes). The general usage is:
 
 ```
 sudo coretemp-monitor {start|stop|restart|status}

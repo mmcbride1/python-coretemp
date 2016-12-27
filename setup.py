@@ -39,7 +39,7 @@ setup(
     'termcolor >= 0.0.1',
    ],
    package_data = {'coretemp': ['*.properties']},
-   description = 'lightweight service to monitor CPU temp',
+   description = 'A simple service to monitor CPU temperature. Runs as daemon.',
    author = 'Matthew R McBride',
    author_email = 'mrmcbride@smcm.edu',
    url = 'https://github.com/mmcbride1/python-coretemp',
